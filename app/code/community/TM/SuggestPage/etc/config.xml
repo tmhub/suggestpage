@@ -6,11 +6,6 @@
         </TM_SuggestPage>
     </modules>
     <global>
-        <blocks>
-            <suggestpage>
-                <class>TM_SuggestPage_Block</class>
-            </suggestpage>
-        </blocks>
         <models>
             <suggestpage>
                 <class>TM_SuggestPage_Model</class>
@@ -49,15 +44,6 @@
                     </suggestpage>
                 </observers>
             </checkout_cart_add_product_complete>
-            <sales_quote_product_add_after>
-                <observers>
-                    <suggestpage>
-                        <type>model</type>
-                        <class>suggestpage/observer</class>
-                        <method>addToQuoteAfter</method>
-                    </suggestpage>
-                </observers>
-            </sales_quote_product_add_after>
         </events>
     </frontend>
     <adminhtml>
