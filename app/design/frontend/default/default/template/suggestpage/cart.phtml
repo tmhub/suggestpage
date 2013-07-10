@@ -1,3 +1,19 @@
+<?php
+// ajaxpro compatibility
+if (!Mage::registry('product')) {
+    $productId = Mage::getSingleton('checkout/session')->getSuggestpageProductId(true);
+    if ($productId) {
+        $product = Mage::getModel('catalog/product')
+            ->setStoreId(Mage::app()->getStore()->getId())
+            ->load($productId);
+        if ($product->getId()) {
+            Mage::register('product', $product);
+        }
+    }
+}
+// ajaxpro compatibility
+?>
+
 <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
 
 <div class="suggestpage-activity col2-set">
