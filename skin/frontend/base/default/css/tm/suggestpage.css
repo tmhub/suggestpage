@@ -31,7 +31,7 @@ button.btn-suggest-page span { display:block; font:bold 12px/19px Arial, Helveti
 button.btn-suggest-page span span { border:0; padding:0; }
 
 .suggestpage-activity .btn-suggest-page span {
-    background: url(../images/suggestpage/btn_actions.gif) no-repeat 0 0;
+    background: url(../../images/tm/suggestpage/btn_actions.gif) no-repeat 0 0;
     font: bold 15px/40px Arial,Helvetica,sans-serif;
     height: 40px;
     border: none;

@@ -4,7 +4,7 @@
     <default>
         <reference name="head">
             <action method="setTitle" translate="title" module="checkout"><title>Shopping Cart</title></action>
-            <action method="addItem"><type>skin_css</type><name>css/suggestpage.css</name></action>
+            <action method="addItem"><type>skin_css</type><name>css/tm/suggestpage.css</name></action>
         </reference>
     </default>
 
@@ -16,7 +16,7 @@
             <action method="setTemplate"><template>page/1column.phtml</template></action>
         </reference>
         <reference name="content">
-            <block type="checkout/cart_sidebar" name="suggest.cart" template="suggestpage/cart.phtml" before="-">
+            <block type="checkout/cart_sidebar" name="suggest.cart" template="tm/suggestpage/cart.phtml" before="-">
                 <action method="addItemRender"><type>simple</type><block>checkout/cart_item_renderer</block><template>checkout/cart/sidebar/default.phtml</template></action>
                 <action method="addItemRender"><type>grouped</type><block>checkout/cart_item_renderer_grouped</block><template>checkout/cart/sidebar/default.phtml</template></action>
                 <action method="addItemRender"><type>configurable</type><block>checkout/cart_item_renderer_configurable</block><template>checkout/cart/sidebar/default.phtml</template></action>

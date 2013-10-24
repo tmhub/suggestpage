@@ -2,7 +2,7 @@
 <config>
     <modules>
         <TM_SuggestPage>
-            <version>1.1.0</version>
+            <version>1.2.0</version>
         </TM_SuggestPage>
     </modules>
     <global>
@@ -30,7 +30,7 @@
         <layout>
              <updates>
                   <suggestpage>
-                        <file>suggestpage.xml</file>
+                        <file>tm/suggestpage.xml</file>
                   </suggestpage>
              </updates>
         </layout>
@@ -65,7 +65,7 @@
                                 <config>
                                     <children>
                                         <suggestpage translate="title" module="suggestpage">
-                                            <title>SuggestPage Section</title>
+                                            <title>SuggestPage</title>
                                         </suggestpage>
                                     </children>
                                 </config>
