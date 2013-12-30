@@ -27,7 +27,7 @@ class TM_SuggestPage_IndexController extends Mage_Core_Controller_Front_Action
 
         $session    = Mage::getSingleton('checkout/session');
         $productId  = $session->getSuggestpageProductId(); // see TM_SuggestPage_Model_Observer
-        $session->setSuggestpageProductId(false);
+        // $session->setSuggestpageProductId(false);
         if ($productId && $product = $this->_initProduct($productId)) {
             Mage::register('product', $product);
         }
