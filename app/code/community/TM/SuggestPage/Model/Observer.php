@@ -71,4 +71,86 @@ class TM_SuggestPage_Model_Observer
         }
         return $isMobile;
     }
+
+    public function addAjaxProMessageHandleOption(Varien_Event_Observer $observer)
+    {
+        $object  = $observer->getObject();
+        $options = $object->getOptions();
+        $options[] = array(
+            'value' => 'tm_ajaxpro_checkout_cart_add_suggestpage',
+            'label' => Mage::helper('suggestpage')->__('SuggestPage Content')
+        );
+        $object->setOptions($options);
+    }
+
+    public function prepareLayoutHandlesAndBlocks(Varien_Event_Observer $observer)
+    {
+        $object     = $observer->getObject();
+        $handles    = $object->getHandles();
+        $blockNames = $object->getBlockNames();
+        $request    = $observer->getObserver()->getControllerAction()->getRequest();
+
+        $suggestpageHandles = array(
+            'suggestpage_index_index',
+            'tm_ajaxpro_checkout_cart_add_suggestpage'
+        );
+        if (!array_intersect($suggestpageHandles, $handles)) {
+            return;
+        }
+
+        if ('delete' == $request->getActionName()) {
+            $handles = $this->_replaceArrayValues($handles, array(
+                'tm_ajaxpro_checkout_cart_add_suggestpage'
+                    => 'tm_ajaxpro_checkout_cart_add_with_cart_extended'
+            ));
+        } else {
+            // hide all popups, when on the suggest page
+            if (in_array('suggestpage_index_index', $handles)) {
+                $blockNames[] = 'content';
+                $blockNames = $this->_replaceArrayValues($blockNames, array(
+                    'ajaxpro_message' => false
+                ));
+                // need to remove all popup handles to prevent their appearence inside of content block
+                $handles = $this->_replaceArrayValues($handles, array(
+                    'tm_ajaxpro_checkout_cart_add_*' => false,
+                    'suggestpage_view' => false // duplicate ajaxpro layout handle bugfix
+                ));
+            } elseif (in_array('tm_ajaxpro_checkout_cart_add_suggestpage', $handles)) {
+                // modify handles, when suggestpage should be shown in popup
+                $handles = array('default', 'tm_ajaxpro_checkout_cart_add_suggestpage');
+                $blockNames[] = 'content';
+            }
+        }
+
+        $object->setBlockNames($blockNames);
+        $object->setHandles($handles);
+    }
+
+    protected function _replaceArrayValues($array, $rules)
+    {
+        foreach ($rules as $search => $replace) {
+            if (strstr($search, '*')) {
+                $index = false;
+                $search = str_replace('*', '', $search);
+                foreach ($array as $i => $str) {
+                    if (false !== strpos($str, $search)) {
+                        $array = $this->_replaceArrayValues($array, array(
+                            $str => $replace
+                        ));
+                    }
+                }
+            } else {
+                $index = array_search($search, $array);
+            }
+            if (false === $index) {
+                continue;
+            }
+            if (!$replace) {
+                unset($array[$index]);
+            } else {
+                $array[$index] = $replace;
+            }
+        }
+        return array_unique($array);
+    }
 }

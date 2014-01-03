@@ -1,7 +1,7 @@
 <?php
 // ajaxpro compatibility
 if (!Mage::registry('product')) {
-    $productId = Mage::getSingleton('checkout/session')->getSuggestpageProductId(true);
+    $productId = Mage::getSingleton('checkout/session')->getSuggestpageProductId();
     if ($productId) {
         $product = Mage::getModel('catalog/product')
             ->setStoreId(Mage::app()->getStore()->getId())
