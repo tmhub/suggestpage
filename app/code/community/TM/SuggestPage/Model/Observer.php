@@ -4,7 +4,9 @@ class TM_SuggestPage_Model_Observer
 {
     public function addToCartComplete(Varien_Event_Observer $observer)
     {
-        if (!Mage::getStoreConfig('suggestpage/general/show_after_addtocart')) {
+        if ($observer->getRequest()->getParam('return_url') // paypal express button fix
+            || !Mage::getStoreConfig('suggestpage/general/show_after_addtocart')) {
+
             return;
         }
         if ($this->_isMobile() && !Mage::getStoreConfig('suggestpage/mobile/show_after_addtocart')) {
