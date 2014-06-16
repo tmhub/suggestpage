@@ -109,6 +109,7 @@ class TM_SuggestPage_Model_Observer
             // hide all popups, when on the suggest page
             if (in_array('suggestpage_index_index', $handles)) {
                 $blockNames[] = 'content';
+                $blockNames[] = 'catalog_product_price_template';
                 $blockNames = $this->_replaceArrayValues($blockNames, array(
                     'ajaxpro_message' => false
                 ));
@@ -121,6 +122,7 @@ class TM_SuggestPage_Model_Observer
                 // modify handles, when suggestpage should be shown in popup
                 $handles = array('default', 'tm_ajaxpro_checkout_cart_add_suggestpage');
                 $blockNames[] = 'content';
+                $blockNames[] = 'catalog_product_price_template';
             }
         }
 
