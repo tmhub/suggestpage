@@ -91,6 +91,9 @@ class TM_SuggestPage_Model_Observer
         $handles    = $object->getHandles();
         $blockNames = $object->getBlockNames();
         $request    = $observer->getObserver()->getControllerAction()->getRequest();
+        if ('cart' !== $request->getControllerName()) {
+            return;
+        }
 
         $suggestpageHandles = array(
             'suggestpage_index_index',
@@ -100,7 +103,7 @@ class TM_SuggestPage_Model_Observer
             return;
         }
 
-        if ('delete' == $request->getActionName()) {
+        if ('add' !== $request->getActionName()) {
             $handles = $this->_replaceArrayValues($handles, array(
                 'tm_ajaxpro_checkout_cart_add_suggestpage'
                     => 'tm_ajaxpro_checkout_cart_add_with_cart_extended'
