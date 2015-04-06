@@ -22,6 +22,14 @@ if (!Mage::registry('product')) {
         $_item = null;
         if ($product = Mage::registry('product')) :
             $_item = $this->getQuote()->getItemByProduct($product);
+            if (!$_item) :
+                foreach ($this->getQuote()->getAllItems() as $_maybe) :
+                    if ($_maybe->getProductId() === $product->getId()) :
+                        $_item = $_maybe;
+                        break;
+                    endif;
+                endforeach;
+            endif;
         endif;
     ?>
 
