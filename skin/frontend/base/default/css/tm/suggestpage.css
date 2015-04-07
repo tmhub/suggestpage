@@ -12,12 +12,12 @@
 .suggestpage-activity .col-2 {
     padding: 15px !important;
     display: table-cell;
-    float: none;
+    float: none !important;
     vertical-align: top;
 }
-.suggestpage-activity .col-1 { width: 35%; border-right: 1px solid #e0e0e0; border-width: 0 1px 0 0; }
-.suggestpage-activity .col-2 { width: 65%; background: #fafafa; }
-.suggestpage-activity .col-wide { width: 100%; border: none; }
+.suggestpage-activity div.col-1 { width: 35%; border-right: 1px solid #e0e0e0; border-width: 0 1px 0 0; }
+.suggestpage-activity div.col-2 { width: 65%; background: #fafafa; }
+.suggestpage-activity div.col-wide { width: 100%; border: none; }
 
 .ajaxpro-form .suggestpage-activity {
     box-shadow: none;
@@ -25,8 +25,8 @@
     margin-top: 0;
     margin-bottom: 10px;
 }
-.ajaxpro-form .suggestpage-activity .col-1 { width: 40%; }
-.ajaxpro-form .suggestpage-activity .col-2 { width: 60%; }
+.ajaxpro-form .suggestpage-activity div.col-1 { width: 40%; }
+.ajaxpro-form .suggestpage-activity div.col-2 { width: 60%; }
 
 .suggestpage-activity .success-msg,
 .suggestpage-activity .error-msg {
