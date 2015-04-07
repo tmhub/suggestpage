@@ -22,7 +22,8 @@
 .ajaxpro-form .suggestpage-activity {
     box-shadow: none;
     border: 1px solid #ebebeb;
-    margin: 0 auto;
+    margin-top: 0;
+    margin-bottom: 10px;
 }
 .ajaxpro-form .suggestpage-activity .col-1 { width: 40%; }
 .ajaxpro-form .suggestpage-activity .col-2 { width: 60%; }
