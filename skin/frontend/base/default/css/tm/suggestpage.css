@@ -72,14 +72,16 @@
 #shopping-cart-totals-table td,
 #shopping-cart-totals-table th { padding: 3px 8px; font-size: 1.1em; }
 
+.suggestpage-activity .actions button { margin: 0 0 4px; }
+
 .suggestpage-activity .mini-products-list,
 .suggestpage-activity .mini-products-list li { zoom: 1; }
 .suggestpage-activity .mini-products-list:after,
 .suggestpage-activity .mini-products-list li:after { content: '.'; display: block; clear: both; visibility: hidden; height: 0; font-size: 0em; }
 
 @media (max-width: 480px) {
+    .suggestpage-activity { display: block; }
     .suggestpage-activity .col-item,
-    .suggestpage-activity .col-totals { float: none; width: auto; display: block; margin: 0 0 5px; clear: both; }
-    .suggestpage-activity .mini-products-list { display: none; }
-    .suggestpage-activity .cartinfo .actions { margin: 10px auto 0; float: left; }
+    .suggestpage-activity .col-totals { float: none; width: auto; display: block; clear: both; border: none; }
+    .suggestpage-activity .col-item { border-bottom: 1px solid #e0e0e0; }
 }
