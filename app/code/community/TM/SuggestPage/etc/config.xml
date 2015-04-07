@@ -28,11 +28,11 @@
             </suggestpage>
         </routers>
         <layout>
-             <updates>
-                  <suggestpage>
-                        <file>tm/suggestpage.xml</file>
-                  </suggestpage>
-             </updates>
+            <updates>
+                <suggestpage>
+                    <file>tm/suggestpage.xml</file>
+                </suggestpage>
+            </updates>
         </layout>
         <events>
             <checkout_cart_add_product_complete>
