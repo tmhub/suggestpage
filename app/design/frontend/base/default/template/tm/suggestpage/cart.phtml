@@ -32,9 +32,9 @@ endif;
     <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
 <?php endif; ?>
 
-<div class="suggestpage-activity col2-set">
+<div class="suggestpage-activity">
     <?php if ($_item) : ?>
-        <div class="col-1">
+        <div class="col-item">
             <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
             <ol id="suggestpage-products-list" class="mini-products-list">
                 <?php echo $this->getItemHtml($_item) ?>
@@ -42,7 +42,7 @@ endif;
         </div>
     <?php endif ?>
 
-    <div class="col-2<?php echo $_item ? '' : ' col-wide' ?>">
+    <div class="col-totals<?php echo $_item ? '' : ' col-totals-wide' ?>">
         <div class="cartinfo">
             <?php $_cartQty = (int) $this->getSummaryCount() ?>
             <?php if ($_cartQty==1): ?>
