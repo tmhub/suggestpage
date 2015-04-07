@@ -20,10 +20,12 @@
     <suggestpage_view>
         <reference name="content">
             <block type="checkout/cart_sidebar" name="suggest.cart" template="tm/suggestpage/cart.phtml" before="-">
-                <action method="addItemRender"><type>simple</type><block>checkout/cart_item_renderer</block><template>checkout/cart/sidebar/default.phtml</template></action>
-                <action method="addItemRender"><type>grouped</type><block>checkout/cart_item_renderer_grouped</block><template>checkout/cart/sidebar/default.phtml</template></action>
-                <action method="addItemRender"><type>configurable</type><block>checkout/cart_item_renderer_configurable</block><template>checkout/cart/sidebar/default.phtml</template></action>
-                <action method="addItemRender"><type>bundle</type><block>bundle/checkout_cart_item_renderer</block><template>checkout/cart/sidebar/default.phtml</template></action>
+                <action method="addItemRender"><type>simple</type><block>checkout/cart_item_renderer</block><template>tm/suggestpage/item/default.phtml</template></action>
+                <action method="addItemRender"><type>grouped</type><block>checkout/cart_item_renderer_grouped</block><template>tm/suggestpage/item/default.phtml</template></action>
+                <action method="addItemRender"><type>configurable</type><block>checkout/cart_item_renderer_configurable</block><template>tm/suggestpage/item/default.phtml</template></action>
+                <action method="addItemRender"><type>bundle</type><block>bundle/checkout_cart_item_renderer</block><template>tm/suggestpage/item/default.phtml</template></action>
+
+                <block type="checkout/cart_totals" name="checkout.cart.totals" template="checkout/cart/totals.phtml"/>
             </block>
         </reference>
     </suggestpage_view>
