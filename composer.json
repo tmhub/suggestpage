@@ -20,22 +20,5 @@
             "type": "composer",
             "url": "http://tmhub.github.io/packages/"
         }
-    ],
-    "extra": {
-        "map": [
-            ["app/code/community/TM/SuggestPage","app/code/community/TM/SuggestPage"],
-            ["app/design/frontend/base/default/layout/tm/suggestpage.xml","app/design/frontend/base/default/layout/tm/suggestpage.xml"],
-            ["app/design/frontend/base/default/template/tm/suggestpage","app/design/frontend/base/default/template/tm/suggestpage"],
-            ["app/etc/modules/TM_SuggestPage.xml","app/etc/modules/TM_SuggestPage.xml"],
-            ["app/locale/en_US/TM_SuggestPage.csv","app/locale/en_US/TM_SuggestPage.csv"],
-            ["app/locale/es_ES/TM_SuggestPage.csv","app/locale/es_ES/TM_SuggestPage.csv"],
-            ["app/locale/fr_FR/TM_SuggestPage.csv","app/locale/fr_FR/TM_SuggestPage.csv"],
-            ["app/locale/it_IT/TM_SuggestPage.csv","app/locale/it_IT/TM_SuggestPage.csv"],
-            ["app/locale/nl_NL/TM_SuggestPage.csv","app/locale/nl_NL/TM_SuggestPage.csv"],
-            ["app/locale/pt_PT/TM_SuggestPage.csv","app/locale/pt_PT/TM_SuggestPage.csv"],
-            ["skin/frontend/base/default/css/tm/suggestpage.css","skin/frontend/base/default/css/tm/suggestpage.css"],
-            ["skin/frontend/base/default/images/tm/suggestpage","skin/frontend/base/default/images/tm/suggestpage"]
-        ],
-        "changelog": ""
-    }
+    ]
 }
