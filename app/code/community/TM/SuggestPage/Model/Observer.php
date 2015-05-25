@@ -90,8 +90,10 @@ class TM_SuggestPage_Model_Observer
         $object     = $observer->getObject();
         $handles    = $object->getHandles();
         $blockNames = $object->getBlockNames();
-        $request    = $observer->getObserver()->getControllerAction()->getRequest();
-        if ('cart' !== $request->getControllerName()) {
+        $controller = $observer->getObserver()->getControllerAction();
+        $actionName = $controller->getFullActionName();
+        $request    = $controller->getRequest();
+        if ('cart' !== $request->getControllerName() && 'wishlist_index_cart' !== $actionName) {
             return;
         }
 
@@ -103,7 +105,7 @@ class TM_SuggestPage_Model_Observer
             return;
         }
 
-        if ('add' !== $request->getActionName()) {
+        if ('add' !== $request->getActionName() && 'wishlist_index_cart' !== $actionName) {
             $handles = $this->_replaceArrayValues($handles, array(
                 'tm_ajaxpro_checkout_cart_add_suggestpage'
                     => 'tm_ajaxpro_checkout_cart_add_with_cart_extended'
