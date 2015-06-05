@@ -2,13 +2,15 @@
 <layout version="0.1.0">
     <default>
         <reference name="head">
-            <action method="setTitle" translate="title" module="checkout"><title>Shopping Cart</title></action>
             <action method="addItem"><type>skin_css</type><name>css/tm/suggestpage.css</name></action>
         </reference>
     </default>
 
     <suggestpage_index_index translate="label">
         <label>Suggest Page</label>
+        <reference name="head">
+            <action method="setTitle" translate="title" module="checkout"><title>Shopping Cart</title></action>
+        </reference>
         <remove name="left"/>
         <remove name="right"/>
         <reference name="root">
