@@ -105,7 +105,10 @@ class TM_SuggestPage_Model_Observer
             return;
         }
 
-        if ('add' !== $request->getActionName() && 'wishlist_index_cart' !== $actionName) {
+        if ('add' !== $request->getActionName()
+            && 'wishlist_index_cart' !== $actionName
+            && 'updateItemOptions' !== $request->getActionName()) {
+
             $handles = $this->_replaceArrayValues($handles, array(
                 'tm_ajaxpro_checkout_cart_add_suggestpage'
                     => 'tm_ajaxpro_checkout_cart_add_with_cart_extended'
