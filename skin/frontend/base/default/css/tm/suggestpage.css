@@ -39,7 +39,7 @@
     margin: 0 !important;
 }
 
-.suggestpage-activity .mini-products-list {}
+.suggestpage-activity .mini-products-list { max-height: 250px; overflow: auto; }
 .suggestpage-activity .mini-products-list li.item { padding: 5px 10px; }
 .suggestpage-activity .mini-products-list .product-image { width: auto; float: left; }
 .suggestpage-activity .mini-products-list .product-details { margin: 0 0 0 115px; }
