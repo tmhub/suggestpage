@@ -26,6 +26,28 @@ class TM_SuggestPage_Model_Observer
         $session->addSuccess($message);
     }
 
+    public function registerLastAddedQuoteItems(Varien_Event_Observer $observer)
+    {
+        // items is not saved yet, so we place them into registry for later
+        Mage::register('suggestpage_last_quote_items', $observer->getItems());
+    }
+
+    public function saveLastAddedQuoteItemIds()
+    {
+        // item is and we can save their ids into session
+        $items = Mage::registry('suggestpage_last_quote_items');
+        if ($items) {
+            foreach ($items as $item) {
+                if ($item->getParentItemId()) {
+                    continue;
+                }
+                $session = Mage::getSingleton('checkout/session');
+                $session->setSuggestpageQuoteItemId($item->getId());
+                break;
+            }
+        }
+    }
+
     // https://github.com/mrlynn/MobileBrowserDetectionExample
     private function _isMobile()
     {

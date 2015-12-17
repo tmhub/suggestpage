@@ -1,34 +1,5 @@
 <?php
-// ajaxpro compatibility
-if (!Mage::registry('product')) {
-    $productId = Mage::getSingleton('checkout/session')->getSuggestpageProductId();
-    if ($productId) {
-        $product = Mage::getModel('catalog/product')
-            ->setStoreId(Mage::app()->getStore()->getId())
-            ->load($productId);
-        if ($product->getId()) {
-            Mage::register('product', $product);
-        }
-    }
-}
-// ajaxpro compatibility
-
-$_item = null;
-if ($product = Mage::registry('product')) :
-    $_item = $this->getQuote()->getItemByProduct($product);
-    if (!$_item) :
-        $_items = Mage::getModel('sales/quote_item')->getCollection();
-        $_items->getSelect()->order('main_table.updated_at DESC');
-        $_items->setQuote($this->getQuote());
-        foreach ($_items as $_maybe) :
-            if ($_maybe->getProductId() === $product->getId()) :
-                $_item = $_maybe;
-                break;
-            endif;
-        endforeach;
-    endif;
-endif;
-
+    $_item = $this->getLastAddedQuoteItem();
 ?>
 
 <?php if (!$_item) : ?>
