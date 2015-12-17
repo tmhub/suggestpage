@@ -2,6 +2,8 @@
 
 class TM_SuggestPage_Block_Cart extends Mage_Checkout_Block_Cart_Sidebar
 {
+    protected $_lastAddedQuoteItems = null;
+
     protected function _prepareLayout()
     {
         if (!Mage::registry('product')) {
@@ -20,20 +22,24 @@ class TM_SuggestPage_Block_Cart extends Mage_Checkout_Block_Cart_Sidebar
         }
     }
 
-    public function getLastAddedQuoteItem()
+    public function getLastAddedQuoteItems()
     {
-        if (!Mage::registry('suggestpage_quote_item')) {
-            $itemId = Mage::getSingleton('checkout/session')->getSuggestpageQuoteItemId();
-            if (!$itemId) {
+        if (null === $this->_lastAddedQuoteItems) {
+            $itemIds = Mage::getSingleton('checkout/session')->getSuggestpageQuoteItemIds();
+            if (!$itemIds) {
                 return false;
             }
 
-            $item = $this->getQuote()->getItemsCollection()->getItemById($itemId);
-            if (!$item->getId()) {
+            $items = array();
+            $collection = $this->getQuote()->getItemsCollection();
+            foreach ($itemIds as $itemId) {
+                $items[] = $collection->getItemById($itemId);
+            }
+            if (!$items) {
                 return false;
             }
-            Mage::register('suggestpage_quote_item', $item);
+            $this->_lastAddedQuoteItems = $items;
         }
-        return Mage::registry('suggestpage_quote_item');
+        return $this->_lastAddedQuoteItems;
     }
 }

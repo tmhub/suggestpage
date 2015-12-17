@@ -37,14 +37,14 @@ class TM_SuggestPage_Model_Observer
         // item is and we can save their ids into session
         $items = Mage::registry('suggestpage_last_quote_items');
         if ($items) {
+            $ids = array();
             foreach ($items as $item) {
                 if ($item->getParentItemId()) {
                     continue;
                 }
-                $session = Mage::getSingleton('checkout/session');
-                $session->setSuggestpageQuoteItemId($item->getId());
-                break;
+                $ids[] = $item->getId();
             }
+            Mage::getSingleton('checkout/session')->setSuggestpageQuoteItemIds($ids);
         }
     }
 

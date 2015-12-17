@@ -1,22 +1,24 @@
 <?php
-    $_item = $this->getLastAddedQuoteItem();
+    $_items = $this->getLastAddedQuoteItems();
 ?>
 
-<?php if (!$_item) : ?>
+<?php if (!$_items) : ?>
     <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
 <?php endif; ?>
 
 <div class="suggestpage-activity">
-    <?php if ($_item) : ?>
+    <?php if ($_items) : ?>
         <div class="col-item">
             <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
             <ol id="suggestpage-products-list" class="mini-products-list">
-                <?php echo $this->getItemHtml($_item) ?>
+                <?php foreach ($_items as $_item) : ?>
+                    <?php echo $this->getItemHtml($_item) ?>
+                <?php endforeach; ?>
             </ol>
         </div>
     <?php endif ?>
 
-    <div class="col-totals<?php echo $_item ? '' : ' col-totals-wide' ?>">
+    <div class="col-totals<?php echo $_items ? '' : ' col-totals-wide' ?>">
         <div class="cartinfo">
             <?php $_cartQty = (int) $this->getSummaryCount() ?>
             <?php if ($_cartQty==1): ?>
