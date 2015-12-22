@@ -33,7 +33,9 @@ class TM_SuggestPage_Block_Cart extends Mage_Checkout_Block_Cart_Sidebar
             $items = array();
             $collection = $this->getQuote()->getItemsCollection();
             foreach ($itemIds as $itemId) {
-                $items[] = $collection->getItemById($itemId);
+                if ($item = $collection->getItemById($itemId)) {
+                    $items[] = $item;
+                }
             }
             if (!$items) {
                 return false;
