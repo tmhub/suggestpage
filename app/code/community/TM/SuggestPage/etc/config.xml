@@ -120,6 +120,11 @@
         </events>
     </adminhtml>
     <default>
+        <subscriptionchecker>
+            <ignored_sections>
+                <suggestpage/>
+            </ignored_sections>
+        </subscriptionchecker>
         <suggestpage>
             <general>
                 <show_after_addtocart>1</show_after_addtocart>
