@@ -29,6 +29,9 @@ class TM_SuggestPage_Model_Observer
     public function registerLastAddedQuoteItems(Varien_Event_Observer $observer)
     {
         // items is not saved yet, so we place them into registry for later
+        if (Mage::registry('suggestpage_last_quote_items')) {
+            Mage::unregister('suggestpage_last_quote_items');
+        }
         Mage::register('suggestpage_last_quote_items', $observer->getItems());
     }
 
