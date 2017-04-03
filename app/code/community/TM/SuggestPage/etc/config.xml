@@ -2,7 +2,7 @@
 <config>
     <modules>
         <TM_SuggestPage>
-            <version>1.4.1</version>
+            <version>1.4.2</version>
         </TM_SuggestPage>
     </modules>
     <global>
