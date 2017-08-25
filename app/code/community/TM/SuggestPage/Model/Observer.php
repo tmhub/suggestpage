@@ -60,9 +60,14 @@ class TM_SuggestPage_Model_Observer
 
             $isMobile = true;
         }
-        if((isset($_SERVER['HTTP_ACCEPT']) && (strpos(strtolower($_SERVER['HTTP_ACCEPT']),'application/vnd.wap.xhtml+xml')>0))
+
+        $strpos = 0;
+        if (isset($_SERVER['HTTP_ACCEPT'])) {
+            $strpos = strpos(strtolower($_SERVER['HTTP_ACCEPT']),'application/vnd.wap.xhtml+xml');
+        }
+        if ($strpos > 0
             || ((isset($_SERVER['HTTP_X_WAP_PROFILE'])
-            || isset($_SERVER['HTTP_PROFILE'])))) {
+                || isset($_SERVER['HTTP_PROFILE'])))) {
 
             $isMobile = true;
         }
@@ -87,14 +92,16 @@ class TM_SuggestPage_Model_Observer
         }
 
         if (isset($_SERVER['ALL_HTTP'])) {
-            if (strpos(strtolower($_SERVER['ALL_HTTP']), 'OperaMini') > 0) {
+            $strpos = strpos(strtolower($_SERVER['ALL_HTTP']), 'OperaMini');
+            if ($strpos > 0) {
                 $isMobile = true;
             }
         }
-        if (isset($_SERVER['HTTP_USER_AGENT'])
-            && strpos(strtolower($_SERVER['HTTP_USER_AGENT']), 'windows') > 0) {
-
-            $isMobile = false;
+        if (isset($_SERVER['HTTP_USER_AGENT'])) {
+            $strpos = strpos(strtolower($_SERVER['HTTP_USER_AGENT']), 'windows');
+            if ($strpos > 0) {
+                $isMobile = false;
+            }
         }
         return $isMobile;
     }
